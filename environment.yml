@@ -12,6 +12,7 @@ dependencies:
 - pip
 - pandas
 - pip:
+  - torchaudio
   - torchvision
   - onnx
   - wandb
