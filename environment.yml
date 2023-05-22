@@ -10,6 +10,7 @@ dependencies:
 - tensorboard
 - protobuf<=3.20
 - pip
+- pandas
 - pip:
   - torchvision
   - onnx
