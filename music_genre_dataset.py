@@ -1,8 +1,7 @@
-import torch
 import os
-from pytorch.utils.data import Dataset, DataLoader
-import pandas as pd
+from torch.utils.data import Dataset, DataLoader
 import torchaudio
+import pandas as pd
 
 class MusicGenreDataset(Dataset):
     def __init__(self, audio_dir, annotations_file, transforms=None):
@@ -17,14 +16,14 @@ class MusicGenreDataset(Dataset):
         audio_sample_path = self._get_audio_sample_path(idx)
         label = self._get_audio_sample_label(idx)
         signal, sr = torchaudio.load(audio_sample_path)
-        if self.transforms: 
+        if self.transforms:
             signal = self.transforms(signal)
         
         return signal, label
     
     def _get_audio_sample_path(self, idx):
-        track_id = "track_id" + str(self.annotations.iloc[idx, 0])
-        fileName = str(track_id) + ".mp3"
+        track_id = f"fold{self.annotations.iloc[idx, 0]}"
+        fileName = f"{track_id}.mp3"
         path = os.path.join(self.audio_dir, fileName)
         
         return path
@@ -33,13 +32,11 @@ class MusicGenreDataset(Dataset):
         return self.annotations.iloc[idx, 1]
     
 if __name__ == "__main__":
-    ANNOTATIONS_FILE = os.path.expanduser("/Desktop/fma/fma_metadata/tracks.csv")
-    AUDIO_DIR = os.path.expanduser("/Desktop/fma/fma_small")
+    ANNOTATIONS_FILE = os.path.expanduser("~/Desktop/fma/fma_metadata/tracks.csv")
+    AUDIO_DIR = os.path.expanduser("~/Desktop/fma/fma_small")
 
-    mgd = MusicGenreDataset(ANNOTATIONS_FILE, AUDIO_DIR)
+    mgd = MusicGenreDataset(AUDIO_DIR, ANNOTATIONS_FILE)
 
-    print("There are " + len(mgd) + " samples in the dataset.")
+    print(f"There are {len(mgd)} samples in the dataset.")
 
     signal, label = mgd[0]
-
-    a = 1
