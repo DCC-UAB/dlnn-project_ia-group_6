@@ -1,4 +1,4 @@
-name: xnap-example
+name: environment_music
 channels:
 - pytorch
 - defaults
