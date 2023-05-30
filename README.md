@@ -1,22 +1,27 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=11110461&assignment_repo_type=AssignmentRepo)
+
 # Music Genre Classification
-Write here a short summary about your project. The text must include a short introduction and the targeted goals
+Our project aimed to conduct music analysis. We were provided with the archive fma_small.zip https://os.unil.cloud.switch.ch/fma/fma_small.zip, which consisted of 8000 songs of 30s in mp3 format. Accompanied by a csv file containing relevant track information such as genre, album, listeners and artist, that can be found in TRACKS.csv.zip file. 
 
 ## Code structure
-You must create as many folders as you consider. You can use the proposed structure or replace it by the one in the base code that you use as starting point. Do not forget to add Markdown files as needed to explain well the code and how to use it.
+To start with, we have a main.ipynb file that it will import some files of the github repository as well as the TRACKS.csv.
 
-## Example Code
-The given code is a simple CNN example training on the MNIST dataset. It shows how to set up the [Weights & Biases](https://wandb.ai/site)  package to monitor how your network is learning, or not.
+As an experiment we tried to slice each spectrogram into time so that we were able to extract 20 partitions per each spectrogram because of data augmentation reasons. As we observed, a CNN model would give us an accuracy of 60%.
 
-Before running the code you have to create a local environment with conda and activate it. The provided [environment.yml](https://github.com/DCC-UAB/XNAP-Project/environment.yml) file has all the required dependencies. Run the following command: ``conda env create --file environment.yml `` to create a conda environment with all the required dependencies and then activate it:
-```
-conda activate xnap-example
-```
+## Required files 
+fma_small
 
-To run the example code:
-```
-python main.py
-```
+TRACKS.csv
+
+main.ipynb
+
+mgd.py
+
+s.py
+
+utils -> utils.py
+
+models -> model.py
 
 
 
