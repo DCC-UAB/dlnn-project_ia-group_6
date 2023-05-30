@@ -5,9 +5,9 @@
 Our project aimed to conduct music analysis. We were provided with the archive fma_small.zip https://os.unil.cloud.switch.ch/fma/fma_small.zip, which consisted of 8000 songs of 30s in mp3 format. Accompanied by a csv file containing relevant track information such as genre, album, listeners and artist, that can be found in TRACKS.csv.zip file. 
 
 ## Code structure
-To start with, we have a main.ipynb file that it will import some files of the github repository as well as the TRACKS.csv.
+Our code is taking the raw mp3 files from the fma_small directory, and the reduced tracks.csv(small). Then it goes through the music_genre_dataset class that can be found in the mgd.py. It converts the mp3 to wav (the format that allows spectrogram conversion), then creates a spectrogram for each of these tracks, and then it splits in parts of 128x128, and finally converts them into tensors. These returns a dataset containing the slices and the label for that group of slices representing each of the tracks. Later we separate all the slices and assign them the corresponding label, and we end up with two tensor lists X and y cotaining more than 714,000 files. We split all these into train, test and validation sets and created the dataloaders, so we could pass the files through the convolutional neural network that can be found in model.py. 
 
-As an experiment we tried to slice each spectrogram into time so that we were able to extract 20 partitions per each spectrogram because of data augmentation reasons. As we observed, a CNN model would give us an accuracy of 60%.
+During the training process we have had trouble since our computers were not able to handle such amount of data. For this reason we did an experiment with a smaller amount of tracks (60), so we could see how the model works. In this case we obtained a maximum accuracy of 60%.  
 
 ## Required files 
 fma_small
